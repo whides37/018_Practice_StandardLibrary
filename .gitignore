@@ -1,0 +1,19 @@
+
+setup.py
+
+src/
+│  ├─ main.py
+│  ├─ utils.py
+│  └─ lib/
+│     ├─ helper.py
+│     └─ data.json
+
+tests/
+│  ├─ test_main.py
+│  └─ .hidden_test.py
+
+docs/
+│  └─ index.rst
+
+.git/
+   └─ config
