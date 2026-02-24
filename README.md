@@ -36,3 +36,19 @@ project/
 - .hidden_test.py や .git/ 配下は無視すること。
 - data.json や README.md もカウント対象。
 - setup.py や index.rst も拡張子別に集計する。
+
+### テストケース（自分で検証するための例）
+- 隠しファイルの除外
+- tests/.hidden_test.py が存在しても集計に含めないこと。
+- 拡張子なしファイルの扱い
+- LICENSE のような拡張子なしファイルがあれば no_ext にカウントされること。
+- 読み込みエラーの扱い
+- 読み込みで UnicodeDecodeError が出たファイルはスキップし、標準エラーに警告を出すこと。
+- 再帰検索
+- src/lib/helper.py のような深い階層もカウントされること。
+
+### ヒント
+- glob.glob("**/*", recursive=True) や pathlib.Path(root).rglob("*") を使うと再帰検索できる。
+- 隠しファイル・ディレクトリを除外するには、パスの各パート（Path.parts）にドットで始まる要素がないかチェックする方法が簡単。
+- ファイルの拡張子は Path.suffix を使うと便利。複数拡張子（例: .tar.gz）は要件に応じて扱いを決めるが、ここでは最後のサフィックスのみで良い。
+- 行数は open(path, "r", encoding="utf-8", errors="replace") のようにして読み、sum(1 for _ in f) で数えると効率的。
