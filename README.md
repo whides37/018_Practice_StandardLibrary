@@ -13,6 +13,7 @@
 
 ### サンプルディレクトリ構成
 
+```
 project/
 ├─ README.md
 ├─ setup.py
@@ -29,6 +30,7 @@ project/
 │  └─ index.rst
 └─ .git/
    └─ config
+```
 
 #### 注意点
 - .hidden_test.py や .git/ 配下は無視すること。
